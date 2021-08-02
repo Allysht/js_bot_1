@@ -1,8 +1,5 @@
 require('dotenv').config();
 
-require('sinon-as-promised');
-sinon.stub(Database, 'connect').rejects(Error('oops'));
-
 const { Client } = require('discord.js');
 const client = new Client();
 
