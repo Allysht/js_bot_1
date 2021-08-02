@@ -2,6 +2,8 @@ require('dotenv').config();
 
 const { Client } = require('discord.js');
 const client = new Client();
+const API = require('anime-images-api')
+const images_api = new API() 
 
 client.on('ready', () => {
     console.log(`${client.user.tag} has logged in.`);
@@ -11,7 +13,9 @@ client.on('ready', () => {
 
 client.on('message', (message) => {
     if (message.content === "$randpick") {
-        message.channel.send("Here's your pick", {files: ["https://sweethentai.com/uploads/heantaihaven_75759_Thighs_hentai.jpg"]});
+        images_api.sfw.hug().then(response => {
+            message.channel.send(response.img);
+        });
     }
 });
 
